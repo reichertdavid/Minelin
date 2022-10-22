@@ -70,9 +70,7 @@ class DatatypeWriter {
      * This method will write the state of a boolean to the array at the pointer position
      */
     fun write(dest: ByteArray, pointer: Int, value: Boolean): Int {
-        var p = pointer
-        dest[p++] = if(value) 0x01 else 0x00
-        return p
+        return write(dest, pointer, if(value) 1 else 0)
     }
 
     /**
