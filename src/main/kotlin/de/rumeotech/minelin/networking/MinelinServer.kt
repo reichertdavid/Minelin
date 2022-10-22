@@ -21,6 +21,11 @@ class MinelinServer {
      */
     private val serverSocket: ServerSocket = ServerSocket(25565)
 
+    /**
+     * This is a list of all current connected Clients
+     */
+    private val connectedClient = mutableListOf<MinelinClient>()
+
     fun start() {
         // Set the running state of the server to true
         this.isRunning = true
@@ -30,7 +35,8 @@ class MinelinServer {
             while (this.isRunning) {
                 try {
                     val socket = this.serverSocket.accept()
-                    LOGGER.info("Accepting connection from \"${socket.inetAddress.hostAddress}\"")
+                    this.connectedClient.add(MinelinClient(socket))
+                    LOGGER.info("Accepting connection from \"${socket.inetAddress.hostName}\"")
                 } catch (e: IOException) {
                     LOGGER.error("Failed connection - info: ", e)
                 }
