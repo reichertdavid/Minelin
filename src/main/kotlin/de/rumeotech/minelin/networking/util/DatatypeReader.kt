@@ -2,6 +2,37 @@ package de.rumeotech.minelin.networking.util
 
 class DatatypeReader {
 
+    private val segmentBits = 0x7F
+    private val continueBits = 0x80
+
+    fun readVarInt(src: ByteArray, pointer: Int): Int {
+        var value = 0
+        var position = pointer
+        var currentByte: Byte
+        while (true) {
+            currentByte = read(src, position)
+            value = value or (currentByte.toInt() and segmentBits shl position)
+            if (currentByte.toInt() and continueBits == 0) break
+            position += 7
+            if (position >= 32) throw RuntimeException("VarInt is too big")
+        }
+        return value
+    }
+
+    fun readVarLong(src: ByteArray, pointer: Int): Long {
+        var value: Long = 0
+        var position = pointer
+        var currentByte: Byte
+        while (true) {
+            currentByte = read(src, position)
+            value = value or ((currentByte.toInt() and segmentBits).toLong() shl position)
+            if (currentByte.toInt() and continueBits == 0) break
+            position += 7
+            if (position >= 64) throw RuntimeException("VarLong is too big")
+        }
+        return value
+    }
+
     /**
      * This method will read the value of a float from the array at the pointer position
      */

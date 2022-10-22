@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="📃 DataTypeWriter can now convert datatypes to bytearrays">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/DatatypeReader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="📃 DataTypeReader can now convert bytearrays to Datatype">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/DatatypeReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/DatatypeReader.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/DatatypeWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/DatatypeWriter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666469453946</updated>
       <workItem from="1666469455865" duration="693000" />
-      <workItem from="1666470163896" duration="7154000" />
+      <workItem from="1666470163896" duration="7568000" />
     </task>
     <task id="LOCAL-00001" summary="🗂 Configured Workspace and added gradle to it">
       <created>1666469895583</created>
@@ -156,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666475932525</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="📃 DataTypeReader can now convert bytearrays to Datatype">
+      <created>1666477499929</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666477499929</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +197,7 @@
     <MESSAGE value=" Configured log4j2.xml" />
     <MESSAGE value=" Added first networking attempts" />
     <MESSAGE value=" DataTypeWriter can now convert datatypes to bytearrays" />
-    <option name="LAST_COMMIT_MESSAGE" value=" DataTypeWriter can now convert datatypes to bytearrays" />
+    <MESSAGE value=" DataTypeReader can now convert bytearrays to Datatype" />
+    <option name="LAST_COMMIT_MESSAGE" value=" DataTypeReader can now convert bytearrays to Datatype" />
   </component>
 </project>

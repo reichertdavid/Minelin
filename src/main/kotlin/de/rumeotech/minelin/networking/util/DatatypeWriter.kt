@@ -1,6 +1,43 @@
 package de.rumeotech.minelin.networking.util
 
+import java.io.IOException
+
+import java.util.concurrent.atomic.AtomicInteger
+
+
+
+
 class DatatypeWriter {
+
+    fun writeVarInt(dest: ByteArray, pointer: Int, varInt: Int): Int{
+        var value = varInt
+        var x = pointer
+        do {
+            var temp = (value and 127).toByte()
+            // Note: >>> means that the sign bit is shifted with the rest of the number rather than being left alone
+            value = value ushr 7
+            if (value != 0) {
+                temp = (temp.toInt() or 128).toByte()
+            }
+            dest[x++] = temp
+        } while (value != 0)
+        return x
+    }
+
+    fun writeVarLong(dest: ByteArray, pointer: Int, varLong: Long): Int {
+        var value = varLong
+        var x = pointer
+        do {
+            var temp = (value and 127).toByte()
+            // Note: >>> means that the sign bit is shifted with the rest of the number rather than being left alone
+            value = value ushr 7
+            if (value != 0L) {
+                temp = (temp.toInt() or 128).toByte()
+            }
+            dest[x++] = temp
+        } while (value != 0L)
+        return x
+    }
 
     /**
      * This method will write the value of a float to the array at the pointer position
