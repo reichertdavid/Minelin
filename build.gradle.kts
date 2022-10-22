@@ -6,14 +6,19 @@ plugins {
 }
 
 group = "de.rumeotech"
-version = "1.0-SNAPSHOT"
+version = "1.0.0-ALPHA"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    // Log4j Implementation
+    implementation("org.apache.logging.log4j", "log4j-api", "2.19.0")
+    implementation("org.apache.logging.log4j", "log4j-core", "2.19.0")
+
+    // org.json implementation
+    implementation("org.json", "json", "20220924")
 }
 
 tasks.test {

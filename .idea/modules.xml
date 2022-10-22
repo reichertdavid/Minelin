@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/minelin.iml" filepath="$PROJECT_DIR$/.idea/modules/minelin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/minelin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/minelin.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/minelin.test.iml" filepath="$PROJECT_DIR$/.idea/modules/minelin.test.iml" />
     </modules>
   </component>
