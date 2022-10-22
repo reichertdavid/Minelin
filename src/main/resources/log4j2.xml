@@ -2,7 +2,7 @@
 <Configuration status="INFO">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{${LOG_DATEFORMAT_PATTERN:-[yyyy.MM.dd HH:mm:ss]}} %highlight{${LOG_LEVEL_PATTERN:-%5p}}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=green bold, TRACE=blue} [%12.12t] %style{%-30.30C{1.}}{green} : %m%n" disableAnsi="false"/>
+            <PatternLayout pattern="%d{${LOG_DATEFORMAT_PATTERN:-[yyyy.MM.dd HH:mm:ss]}} %highlight{${LOG_LEVEL_PATTERN:-%5p}}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=green bold, TRACE=blue} [%20.20t] %style{%-30.30C{1.}}{green} : %m%n" disableAnsi="false"/>
         </Console>
     </Appenders>
     <Loggers>

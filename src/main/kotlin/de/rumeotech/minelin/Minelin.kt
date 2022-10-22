@@ -24,7 +24,9 @@ object Minelin {
     @JvmStatic
     fun main(args: Array<String>) {
         LOGGER.info("Starting up Minelin $VERSION...")
+
         server = MinelinServer()
+        server.start()
     }
 
 }
