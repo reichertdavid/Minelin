@@ -1,3 +1,4 @@
+![](https://i.imgur.com/N1JvkEE.png)
 
 # 🎮  Minelin
 A full minecraft server written from scratch in kotlin - gives you the ability to write plugins for it.
