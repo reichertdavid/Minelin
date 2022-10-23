@@ -15,18 +15,15 @@ object DatatypeReader {
         var value = 0
         var read = 0
 
-        while(true) {
+        do {
             read = stream.read()
             val v = read and 0x7F
             value = value or (v shl (position * 7))
 
-
-            if((read and 0x80) == 0) break
-
             position++
             if(position > 5) throw IOException("VarInt is too big")
-        }
-        return VarInt(value, (position + 1).toByte())
+        } while((read and 0x80) != 0)
+        return VarInt(value, (position).toByte())
     }
 
 }

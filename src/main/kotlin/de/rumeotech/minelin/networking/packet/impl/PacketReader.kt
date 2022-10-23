@@ -4,7 +4,7 @@ import de.rumeotech.minelin.networking.util.DatatypeReader
 import de.rumeotech.minelin.networking.util.datatype.VarInt
 import java.io.InputStream
 
-class PacketReader(private val input: InputStream) {
+class PacketReader(val input: InputStream) {
 
     /**
      * This function will read a var int of the input stream

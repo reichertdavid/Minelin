@@ -17,7 +17,8 @@ class CPacketHandshake : Packet() {
         val protocol = reader.readVarInt()
         val address = reader.readString()
         val port = reader.readUShort()
-        val state = PacketState.values().first { it.id == reader.readVarInt().value }
+        val nextState = reader.readVarInt().value
+        val state = PacketState.values().first { it.id ==  nextState }
 
         client.currentState = state
         LOGGER.info("Handshake received! protocol: $protocol, host: $address, port: $port, state: $state")

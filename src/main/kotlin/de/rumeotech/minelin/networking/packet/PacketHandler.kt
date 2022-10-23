@@ -30,8 +30,11 @@ class PacketHandler {
 
             val packetId = DatatypeReader.readVarInt(input)
 
-            val data = ByteArray(packetSize.value)
-            input.read(data, 0, packetSize.value)
+            val data = ByteArray(packetSize.value - packetId.size)
+            if(packetSize.value - packetId.size > 0) {
+                input.read(data)
+            }
+
 
             LOGGER.info("receiving packet - id: $packetId, size: $packetSize, state: ${client.currentState}")
 
