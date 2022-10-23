@@ -2,8 +2,10 @@ package de.rumeotech.minelin.networking
 
 import com.sun.java.browser.net.ProxyService
 import de.rumeotech.minelin.Minelin
+import de.rumeotech.minelin.networking.packet.impl.PacketState
 import java.net.Socket
 import java.util.*
+import java.util.logging.Logger
 
 
 class MinelinClient(val socket: Socket) {
@@ -11,6 +13,8 @@ class MinelinClient(val socket: Socket) {
     val id = UUID.randomUUID()
     val inputStream = socket.getInputStream()
     val outputStream = socket.getOutputStream()
+
+    var currentState = PacketState.HANDSHAKING
 
     init {
         val clientThread = Thread(

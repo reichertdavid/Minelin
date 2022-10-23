@@ -4,11 +4,14 @@ import de.rumeotech.minelin.networking.MinelinClient
 import de.rumeotech.minelin.networking.packet.impl.Packet
 import de.rumeotech.minelin.networking.packet.impl.PacketInfo
 import de.rumeotech.minelin.networking.packet.impl.PacketReader
-import de.rumeotech.minelin.networking.packet.impl.side.CPacketHandshake
+import de.rumeotech.minelin.networking.packet.impl.PacketState
+import de.rumeotech.minelin.networking.packet.impl.side.serverbound.CPacketHandshake
 import de.rumeotech.minelin.networking.util.DatatypeReader
 import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import java.io.ByteArrayInputStream
 import java.io.IOException
+import java.lang.Exception
 import java.util.concurrent.atomic.AtomicInteger
 
 
@@ -22,26 +25,30 @@ class PacketHandler {
             val input = client.inputStream
 
             val packetSize = DatatypeReader.readVarInt(input)
+            LOGGER.info("packet was announced - size: $packetSize")
+            assert(packetSize.value >= 0)
 
-            // stole this from old project, credits given to @paulschwahn
-            // TODO: revision if better code is available
-            val packetData = ByteArray(packetSize)
-            var n = 0
-            while (n < packetSize) {
-                val size: Int = input.read(packetData, n, packetSize - n)
-                if (size < 0) throw IOException()
-                n += size
+            val packetId = DatatypeReader.readVarInt(input)
+
+            val data = ByteArray(packetSize.value)
+            input.read(data, 0, packetSize.value)
+
+            LOGGER.info("receiving packet - id: $packetId, size: $packetSize, state: ${client.currentState}")
+
+            val packetStream = ByteArrayInputStream(data)
+            val packet = packetList.firstOrNull { p ->
+                val annotation = p.javaClass.getAnnotation(PacketInfo::class.java)
+                annotation.id == packetId.value && annotation.state == client.currentState
             }
 
-            val pointer = AtomicInteger(0)
-            val packetId: Int = DatatypeReader.readVarInt(packetData, pointer)
-            val strippedData = ByteArray(packetSize - pointer.get())
-            System.arraycopy(packetData, pointer.get(), strippedData, 0, strippedData.size)
+            if(packet != null) {
+                packet.read(PacketReader(packetStream), client)
+            } else {
+                LOGGER.warn("cannot find packet [id: $packetId, size: $packetSize]")
+            }
 
-            packetList.first { p -> p.javaClass.getAnnotation(PacketInfo::class.java).id == packetId }.read(PacketReader(ByteArrayInputStream(strippedData)))
-
-            LOGGER.info("Receiving packet $packetId with size $packetSize")
-        } catch (e: IOException) {
+        } catch (e: Exception) {
+            LOGGER.warn("disconnecting client ${e.message}", e)
             client.disconnect()
         }
     }

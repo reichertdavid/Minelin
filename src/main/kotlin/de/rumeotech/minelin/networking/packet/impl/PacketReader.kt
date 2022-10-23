@@ -1,6 +1,7 @@
 package de.rumeotech.minelin.networking.packet.impl
 
 import de.rumeotech.minelin.networking.util.DatatypeReader
+import de.rumeotech.minelin.networking.util.datatype.VarInt
 import java.io.InputStream
 
 class PacketReader(private val input: InputStream) {
@@ -8,7 +9,7 @@ class PacketReader(private val input: InputStream) {
     /**
      * This function will read a var int of the input stream
      */
-    fun readVarInt(): Int {
+    fun readVarInt(): VarInt {
         return DatatypeReader.readVarInt(input)
     }
 
@@ -17,7 +18,7 @@ class PacketReader(private val input: InputStream) {
      */
     fun readString(): String {
         val length = this.readVarInt()
-        val bytes = ByteArray(length)
+        val bytes = ByteArray(length.value)
         input.read(bytes)
         return String(bytes)
     }
