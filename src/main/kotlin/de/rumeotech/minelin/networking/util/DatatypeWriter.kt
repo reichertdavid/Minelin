@@ -1,15 +1,9 @@
 package de.rumeotech.minelin.networking.util
 
-import java.io.IOException
 
-import java.util.concurrent.atomic.AtomicInteger
+object DatatypeWriter {
 
-
-
-
-class DatatypeWriter {
-
-    fun writeVarInt(dest: ByteArray, pointer: Int, varInt: Int): Int{
+    fun writeVarInt(dest: ByteArray, pointer: Int, varInt: Int): Int {
         var value = varInt
         var x = pointer
         do {
@@ -107,7 +101,7 @@ class DatatypeWriter {
      * This method will write the state of a boolean to the array at the pointer position
      */
     fun write(dest: ByteArray, pointer: Int, value: Boolean): Int {
-        return write(dest, pointer, if(value) 1 else 0)
+        return write(dest, pointer, if (value) 1 else 0)
     }
 
     /**

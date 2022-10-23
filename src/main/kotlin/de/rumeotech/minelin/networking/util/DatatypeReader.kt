@@ -1,21 +1,47 @@
 package de.rumeotech.minelin.networking.util
 
-class DatatypeReader {
+import java.io.EOFException
+import java.io.IOException
+import java.io.InputStream
+import java.util.concurrent.atomic.AtomicInteger
+import kotlin.experimental.and
+
+
+object DatatypeReader {
 
     private val segmentBits = 0x7F
     private val continueBits = 0x80
 
-    fun readVarInt(src: ByteArray, pointer: Int): Int {
+    fun readVarInt(stream: InputStream): Int {
+        var numRead = 0
         var value = 0
-        var position = pointer
-        var currentByte: Byte
-        while (true) {
-            currentByte = read(src, position)
-            value = value or (currentByte.toInt() and segmentBits shl position)
-            if (currentByte.toInt() and continueBits == 0) break
-            position += 7
-            if (position >= 32) throw RuntimeException("VarInt is too big")
-        }
+        var read = 0
+
+        do {
+            read = stream.read()
+
+            val res = (read and 0b01111111)
+            value = value or (res shl (7 * numRead))
+
+            numRead++
+            if(numRead > 5) throw IOException("VarInt is too big")
+        } while ((read and 0b10000000) != 0)
+        return value
+    }
+
+    fun readVarInt(src: ByteArray, pointer: AtomicInteger): Int {
+        var numRead = 0
+        var value = 0
+        var read = 0
+
+        do {
+            read = read(src, pointer.getAndIncrement()).toInt()
+            val res = (read and 0b01111111)
+            value = value or (res shl (7 * numRead))
+
+            numRead++
+            if(numRead > 5) throw IOException("VarInt is too big")
+        } while ((read and 0b10000000) != 0)
         return value
     }
 
@@ -62,6 +88,7 @@ class DatatypeReader {
      */
     fun readString(src: ByteArray, pointer: Int): String {
         val length = readShort(src, pointer).toInt()
+        println(length)
         return String(src, pointer + 2, length)
     }
 
