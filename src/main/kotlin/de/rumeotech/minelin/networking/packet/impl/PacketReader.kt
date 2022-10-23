@@ -21,4 +21,11 @@ class PacketReader(private val input: InputStream) {
         input.read(bytes)
         return String(bytes)
     }
+
+    fun readUShort(): UShort {
+        val bytes = ByteArray(2)
+        input.read(bytes)
+        val short = ((bytes[0].toInt() and 0xFF) shl 8) or ((bytes[1].toInt() and 0xFF) shl 0)
+        return short.toUShort()
+    }
 }

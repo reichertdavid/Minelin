@@ -42,7 +42,6 @@ class PacketHandler {
 
             LOGGER.info("Receiving packet $packetId with size $packetSize")
         } catch (e: IOException) {
-            LOGGER.warn("Disconnected client reason: connection lost due [${e.message}]")
             client.disconnect()
         }
     }
