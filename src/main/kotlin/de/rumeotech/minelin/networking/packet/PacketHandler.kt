@@ -28,6 +28,9 @@ class PacketHandler {
 
             if(input.available() == 0) return
 
+            // Update that our client sent something
+            client.lastInputAt = System.currentTimeMillis()
+
             val packetSize = VariableHelper.readVarInt(input)
             assert(packetSize.value >= 0)
 

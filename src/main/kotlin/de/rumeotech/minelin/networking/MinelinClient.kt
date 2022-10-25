@@ -1,6 +1,5 @@
 package de.rumeotech.minelin.networking
 
-import com.sun.java.browser.net.ProxyService
 import de.rumeotech.minelin.Minelin
 import de.rumeotech.minelin.networking.packet.impl.Packet
 import de.rumeotech.minelin.networking.packet.impl.PacketState
@@ -10,7 +9,6 @@ import de.rumeotech.minelin.networking.util.datatype.VarInt
 import java.io.ByteArrayOutputStream
 import java.net.Socket
 import java.util.*
-import java.util.logging.Logger
 
 
 class MinelinClient(val socket: Socket) {
@@ -35,6 +33,16 @@ class MinelinClient(val socket: Socket) {
      */
     var currentState = PacketState.HANDSHAKING
 
+    /**
+     * If the client is quiet for more than this amount of milliseconds, we'll disconnect the client
+     */
+    private val timeoutAfter = 1000 * 15
+
+    /**
+     * This will determine how long the last input from our client is back in time
+     */
+    var lastInputAt = System.currentTimeMillis()
+
     init {
         val clientThread = Thread(
             {
@@ -42,6 +50,7 @@ class MinelinClient(val socket: Socket) {
                 while (this.isConnected()) {
                     Minelin.server.packetHandler.handlePacket(this)
                 }
+                this.disconnect()
             }, "Client #${socket.inetAddress.hostName}"
         )
         clientThread.start()
@@ -80,6 +89,8 @@ class MinelinClient(val socket: Socket) {
      * Checks if the client is connected by using some simple socket checks
      */
     fun isConnected(): Boolean {
+        if(System.currentTimeMillis() - lastInputAt > timeoutAfter) return false
+
         return this.socket.isConnected && !this.socket.isClosed && !this.socket.isInputShutdown && !this.socket.isOutputShutdown
     }
 
@@ -88,7 +99,7 @@ class MinelinClient(val socket: Socket) {
      */
     fun disconnect() {
         Minelin.server.connectedClients.removeIf {
-            it.id == id
+            it.id.toString() == this.id.toString()
         }
         if (!socket.isInputShutdown) inputStream.close()
         if (!socket.isOutputShutdown) outputStream.close()
