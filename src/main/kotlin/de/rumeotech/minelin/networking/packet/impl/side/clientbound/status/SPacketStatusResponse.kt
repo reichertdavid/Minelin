@@ -1,4 +1,4 @@
-package de.rumeotech.minelin.networking.packet.impl.side.clientbound
+package de.rumeotech.minelin.networking.packet.impl.side.clientbound.status
 
 import de.rumeotech.minelin.networking.MinelinClient
 import de.rumeotech.minelin.networking.packet.impl.*

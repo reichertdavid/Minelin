@@ -3,6 +3,7 @@ package de.rumeotech.minelin.configuration
 import de.rumeotech.minelin.configuration.impl.ServerConfiguration
 import org.json.JSONObject
 import java.io.File
+import java.util.*
 
 object ConfigurationManager {
 
@@ -23,4 +24,17 @@ object ConfigurationManager {
         }
     }
 
+    /**
+     * This function returns the favicon as a formatted string
+     */
+    fun readFavicon(): String {
+        val favicon = File("favicon.png")
+        var value = "data:image/png;base64,<data>"
+        if(favicon.exists()) {
+            val imageBytes = favicon.readBytes()
+            val base64 = Base64.getEncoder().encode(imageBytes)
+            value = value.replace("<data>", String(base64))
+        }
+        return value
+    }
 }

@@ -2,8 +2,9 @@ package de.rumeotech.minelin.networking.packet
 
 import de.rumeotech.minelin.networking.MinelinClient
 import de.rumeotech.minelin.networking.packet.impl.*
-import de.rumeotech.minelin.networking.packet.impl.side.serverbound.CPacketHandshake
-import de.rumeotech.minelin.networking.packet.impl.side.serverbound.CPacketStatusRequest
+import de.rumeotech.minelin.networking.packet.impl.side.serverbound.handshake.CPacketHandshake
+import de.rumeotech.minelin.networking.packet.impl.side.serverbound.status.CPacketPingRequest
+import de.rumeotech.minelin.networking.packet.impl.side.serverbound.status.CPacketStatusRequest
 import de.rumeotech.minelin.networking.packet.impl.util.PacketReader
 import de.rumeotech.minelin.networking.util.VariableHelper
 import org.apache.logging.log4j.LogManager
@@ -14,11 +15,18 @@ import java.lang.Exception
 class PacketHandler {
 
     private val LOGGER = LogManager.getLogger()
-    private val packetList = mutableListOf<Packet>(CPacketHandshake(), CPacketStatusRequest())
+
+    /**
+     * A list of all packets that could be sent by the client
+     */
+    private val incomingPackets = mutableListOf(
+        CPacketHandshake(), CPacketStatusRequest(), CPacketPingRequest())
 
     fun handlePacket(client: MinelinClient) {
         try {
             val input = client.inputStream
+
+            if(input.available() == 0) return
 
             val packetSize = VariableHelper.readVarInt(input)
             assert(packetSize.value >= 0)
@@ -34,7 +42,7 @@ class PacketHandler {
             LOGGER.info("receiving packet - id: $packetId, size: $packetSize, state: ${client.currentState}")
 
             val packetStream = ByteArrayInputStream(data)
-            val packet = packetList.firstOrNull { p ->
+            val packet = incomingPackets.firstOrNull { p ->
                 val annotation = p.javaClass.getAnnotation(PacketInfo::class.java)
                 annotation.id == packetId.value && annotation.state == client.currentState && annotation.boundTo == PacketBound.SERVERBOUND
             }

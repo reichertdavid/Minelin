@@ -1,4 +1,4 @@
-package de.rumeotech.minelin.networking.packet.impl.side.serverbound
+package de.rumeotech.minelin.networking.packet.impl.side.serverbound.handshake
 
 import de.rumeotech.minelin.networking.MinelinClient
 import de.rumeotech.minelin.networking.packet.impl.Packet

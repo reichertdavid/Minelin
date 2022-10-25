@@ -15,4 +15,12 @@ class PacketWriter(val output: ByteArrayOutputStream) {
         output.write(string.encodeToByteArray())
     }
 
+    fun writeLong(value: Long) {
+        val bytes = ByteArray(Long.SIZE_BYTES)
+        bytes.indices.forEach { i ->
+            bytes[i] = ((value shr ((8-i)*Long.SIZE_BYTES)) and 0xFF).toByte()
+        }
+        output.write(bytes)
+    }
+
 }
