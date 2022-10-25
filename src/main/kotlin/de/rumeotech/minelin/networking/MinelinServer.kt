@@ -1,5 +1,6 @@
 package de.rumeotech.minelin.networking
 
+import de.rumeotech.minelin.configuration.ConfigurationManager
 import de.rumeotech.minelin.networking.packet.PacketHandler
 import org.apache.logging.log4j.LogManager
 import java.io.IOException
@@ -20,7 +21,7 @@ class MinelinServer {
     /**
      * ServerSocket object to receive TCP/IP Connection from the Minecraft client
      */
-    private val serverSocket: ServerSocket = ServerSocket(25565)
+    private val serverSocket: ServerSocket = ServerSocket(ConfigurationManager.serverConfiguration.port)
 
     /**
      * This is a list of all current connected Clients

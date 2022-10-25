@@ -1,5 +1,6 @@
 package de.rumeotech.minelin
 
+import de.rumeotech.minelin.configuration.ConfigurationManager
 import de.rumeotech.minelin.networking.MinelinServer
 import org.apache.logging.log4j.LogManager
 
@@ -24,6 +25,12 @@ object Minelin {
     @JvmStatic
     fun main(args: Array<String>) {
         LOGGER.info("Starting up Minelin $VERSION...")
+
+        ConfigurationManager.loadConfig()
+
+        Runtime.getRuntime().addShutdownHook(Thread {
+            ConfigurationManager.saveConfig()
+        })
 
         server = MinelinServer()
         server.start()

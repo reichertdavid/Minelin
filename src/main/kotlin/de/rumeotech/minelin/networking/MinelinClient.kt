@@ -23,7 +23,7 @@ class MinelinClient(val socket: Socket) {
     /**
      * create final object of clients input stream
      */
-    private val inputStream = socket.getInputStream()
+    val inputStream = socket.getInputStream()!!
 
     /**
      * create final object of clients output stream

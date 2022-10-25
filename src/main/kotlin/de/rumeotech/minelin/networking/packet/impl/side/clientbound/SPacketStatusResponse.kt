@@ -11,17 +11,13 @@ import de.rumeotech.minelin.networking.util.models.request.impl.SRVersionDataMod
 import org.json.JSONObject
 
 @PacketInfo(id = 0x00, state = PacketState.STATUS, boundTo = PacketBound.CLIENTBOUND)
-class SPacketStatusResponse : Packet() {
+class SPacketStatusResponse(private val status: StatusResponseModel) : Packet() {
 
     override fun read(reader: PacketReader, client: MinelinClient) {
     }
 
     override fun write(writer: PacketWriter) {
-        val model = StatusResponseModel(SRVersionDataModel("1.19.2", 760), SRPlayersModel(100, 0, arrayOf()), SRDescriptionModel("Welcome to Minelin"), "",
-            previewsChat = false,
-            enforcesSecureChat = false
-        )
-        val responseJSON = JSONObject(model)
+        val responseJSON = JSONObject(status)
         writer.writeString(responseJSON.toString())
     }
 }

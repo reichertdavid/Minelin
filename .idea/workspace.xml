@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="🤦 Fixed iterative data reading issue - thanks to @paulschwahn">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/PacketBound.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/SPacketStatusResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/CPacketStatusRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/util/PacketWriter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/models/request/StatusResponseModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/models/request/impl/SRDescriptionModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/models/request/impl/SRPlayersModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/models/request/impl/SRVersionDataModel.kt" afterDir="false" />
+    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="ℹ Added ability to send packets and finished SPacketStatusResponse">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/configuration/ConfigurationManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/configuration/impl/ServerConfiguration.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -20,14 +14,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/Minelin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/Minelin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/MinelinClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/MinelinClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/PacketHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/PacketHandler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/Packet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/Packet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/PacketInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/PacketInfo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/PacketReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/util/PacketReader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/CPacketHandshake.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/CPacketHandshake.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/DatatypeReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/VariableHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/datatype/VarInt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/datatype/VarInt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/MinelinServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/MinelinServer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/SPacketStatusResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/SPacketStatusResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/CPacketStatusRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/CPacketStatusRequest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,11 +61,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Object" />
         <option value="Kotlin Annotation" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Enum" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Object" />
         <option value="Kotlin Data Class" />
       </list>
     </option>
@@ -97,17 +88,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/reich/Documents/Projects/minelin/src/main/resources&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/reich/Documents/Projects/minelin/src/main/resources",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\reich\Documents\Projects\minelin\src\main\resources" />
@@ -154,7 +145,7 @@
       <workItem from="1666526971456" duration="9660000" />
       <workItem from="1666558399929" duration="3451000" />
       <workItem from="1666637887204" duration="6434000" />
-      <workItem from="1666720963588" duration="2525000" />
+      <workItem from="1666720963588" duration="3301000" />
     </task>
     <task id="LOCAL-00001" summary="🗂 Configured Workspace and added gradle to it">
       <created>1666469895583</created>
@@ -233,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666561641489</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ℹ Added ability to send packets and finished SPacketStatusResponse">
+      <created>1666723593761</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666723593761</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +272,7 @@
     <MESSAGE value="✏ Refactoring and finished CPacketHandshake" />
     <MESSAGE value=" There is an error with reading the inputstream" />
     <MESSAGE value=" Fixed iterative data reading issue - thanks to @paulschwahn" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Fixed iterative data reading issue - thanks to @paulschwahn" />
+    <MESSAGE value="ℹ Added ability to send packets and finished SPacketStatusResponse" />
+    <option name="LAST_COMMIT_MESSAGE" value="ℹ Added ability to send packets and finished SPacketStatusResponse" />
   </component>
 </project>
