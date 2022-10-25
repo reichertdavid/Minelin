@@ -1,6 +1,6 @@
-package de.rumeotech.minelin.networking.packet.impl
+package de.rumeotech.minelin.networking.packet.impl.util
 
-import de.rumeotech.minelin.networking.util.DatatypeReader
+import de.rumeotech.minelin.networking.util.VariableHelper
 import de.rumeotech.minelin.networking.util.datatype.VarInt
 import java.io.InputStream
 
@@ -10,7 +10,7 @@ class PacketReader(val input: InputStream) {
      * This function will read a var int of the input stream
      */
     fun readVarInt(): VarInt {
-        return DatatypeReader.readVarInt(input)
+        return VariableHelper.readVarInt(input)
     }
 
     /**
