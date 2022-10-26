@@ -1,14 +1,12 @@
 package de.rumeotech.minelin.networking.util
 
 import de.rumeotech.minelin.networking.util.datatype.VarInt
-import java.io.EOFException
 import java.io.IOException
 import java.io.InputStream
-import java.util.concurrent.atomic.AtomicInteger
-import kotlin.experimental.and
+import java.io.OutputStream
 
 
-object DatatypeReader {
+object VariableHelper {
 
     fun readVarInt(stream: InputStream): VarInt {
         var position = 0
@@ -24,6 +22,18 @@ object DatatypeReader {
             if(position > 5) throw IOException("VarInt is too big")
         } while((read and 0x80) != 0)
         return VarInt(value, (position).toByte())
+    }
+
+    fun writeVarInt(stream: OutputStream, varInt: VarInt) {
+        do {
+            var v = varInt.value and 0x7F
+
+            varInt.value = varInt.value ushr 7
+            if(varInt.value != 0) {
+                v = v or 0x80
+            }
+            stream.write(v)
+        } while(varInt.value != 0)
     }
 
 }

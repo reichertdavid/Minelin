@@ -1,11 +1,11 @@
-package de.rumeotech.minelin.networking.packet.impl.side.serverbound
+package de.rumeotech.minelin.networking.packet.impl.side.serverbound.handshake
 
 import de.rumeotech.minelin.networking.MinelinClient
 import de.rumeotech.minelin.networking.packet.impl.Packet
 import de.rumeotech.minelin.networking.packet.impl.PacketInfo
-import de.rumeotech.minelin.networking.packet.impl.PacketReader
+import de.rumeotech.minelin.networking.packet.impl.util.PacketReader
 import de.rumeotech.minelin.networking.packet.impl.PacketState
-import java.util.logging.Logger
+import de.rumeotech.minelin.networking.packet.impl.util.PacketWriter
 
 /**
  * https://wiki.vg/Protocol#Handshake
@@ -21,10 +21,9 @@ class CPacketHandshake : Packet() {
         val state = PacketState.values().first { it.id ==  nextState }
 
         client.currentState = state
-        LOGGER.info("Handshake received! protocol: $protocol, host: $address, port: $port, state: $state")
     }
 
-    override fun write() {
+    override fun write(writer: PacketWriter) {
     }
 
 }
