@@ -1,10 +1,17 @@
 package de.rumeotech.minelin.networking.packet.impl.util
 
+import de.rumeotech.minelin.configuration.ConfigurationManager
 import de.rumeotech.minelin.networking.util.VariableHelper
 import de.rumeotech.minelin.networking.util.datatype.VarInt
+import de.rumeotech.minelin.networking.util.models.chat.ChatObject
 import java.io.ByteArrayOutputStream
 
 class PacketWriter(val output: ByteArrayOutputStream) {
+
+    fun writeChat(chat: ChatObject) {
+        val string = ConfigurationManager.gson.toJson(chat)
+        this.writeString(string)
+    }
 
     fun writeVarInt(varInt: VarInt) {
         VariableHelper.writeVarInt(output, varInt)

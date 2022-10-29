@@ -10,6 +10,9 @@ version = "1.0.0-ALPHA"
 
 repositories {
     mavenCentral()
+
+    // jitpack
+    maven("https://jitpack.io")
 }
 
 dependencies {
@@ -19,6 +22,9 @@ dependencies {
 
     // org.json implementation
     implementation("com.google.code.gson", "gson", "2.10")
+
+    // khttp implementation
+    implementation("com.github.jkcclemens", "khttp", "-SNAPSHOT")
 }
 
 tasks.test {
