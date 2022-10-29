@@ -7,11 +7,11 @@ import java.util.*
 
 object ConfigurationManager {
 
-    var serverConfiguration = ServerConfiguration(100, "Welcome to Minelin", 25565)
+    var serverConfiguration = ServerConfiguration()
     val gson = Gson()
 
     fun saveConfig() {
-        val propertiesFile = File("config.json")
+        val propertiesFile = File("server.json")
         propertiesFile.writeText(gson.toJson(propertiesFile))
     }
 
