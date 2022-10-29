@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="📦Switched from org.json to google gson">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="Added documentation for server configuration">
+      <change afterPath="$PROJECT_DIR$/COPYRIGHT" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/configuration/ConfigurationManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/configuration/ConfigurationManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/configuration/impl/ServerConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/configuration/impl/ServerConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,17 +77,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/reich/Documents/Projects/minelin/src/main/resources&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/reich/Documents/Projects/minelin/src/main/resources",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\reich\Documents\Projects\minelin\src\main\resources" />
@@ -138,7 +137,7 @@
       <workItem from="1666637887204" duration="6434000" />
       <workItem from="1666720963588" duration="8951000" />
       <workItem from="1666974077759" duration="2916000" />
-      <workItem from="1667032466611" duration="2201000" />
+      <workItem from="1667032466611" duration="2602000" />
     </task>
     <task id="LOCAL-00001" summary="🗂 Configured Workspace and added gradle to it">
       <created>1666469895583</created>
@@ -245,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666730133238</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added documentation for server configuration">
+      <created>1667034842814</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1667034842814</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +297,7 @@
     <MESSAGE value="⏱ Added Ping/Pong Packets for Status/Server List" />
     <MESSAGE value="⏹ Disconnecting clients if input stream empty for X seconds" />
     <MESSAGE value="Switched from org.json to google gson" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switched from org.json to google gson" />
+    <MESSAGE value="Added documentation for server configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added documentation for server configuration" />
   </component>
 </project>
