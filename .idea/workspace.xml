@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="Added copyright disclaimer">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/login/SPacketDisconnect.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/models/chat/ChatObject.kt" afterDir="false" />
+    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="Added SPacketDisconnect and ChatObject">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/login/CPacketLoginStart.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
@@ -18,16 +17,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/modules/minelin.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/minelin.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/MinelinClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/MinelinClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/configuration/ConfigurationManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/configuration/ConfigurationManager.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/PacketHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/PacketHandler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/Packet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/Packet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/status/SPacketPongResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/status/SPacketPongResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/status/SPacketStatusResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/status/SPacketStatusResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/handshake/CPacketHandshake.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/handshake/CPacketHandshake.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/status/CPacketPingRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/status/CPacketPingRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/status/CPacketStatusRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/status/CPacketStatusRequest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/util/PacketReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/util/PacketReader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/util/PacketWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/util/PacketWriter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,17 +89,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/reich/Documents/Projects/minelin/src/main/resources",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/reich/Documents/Projects/minelin/src/main/resources&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\reich\Documents\Projects\minelin\src\main\resources" />
@@ -157,7 +149,9 @@
       <workItem from="1666637887204" duration="6434000" />
       <workItem from="1666720963588" duration="8951000" />
       <workItem from="1666974077759" duration="2916000" />
-      <workItem from="1667032466611" duration="3478000" />
+      <workItem from="1667032466611" duration="4945000" />
+      <workItem from="1667250539224" duration="97000" />
+      <workItem from="1667296389311" duration="3020000" />
     </task>
     <task id="LOCAL-00001" summary="🗂 Configured Workspace and added gradle to it">
       <created>1666469895583</created>
@@ -278,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667035314966</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added SPacketDisconnect and ChatObject">
+      <created>1667036098460</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1667036098460</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,6 +327,7 @@
     <MESSAGE value="Switched from org.json to google gson" />
     <MESSAGE value="Added documentation for server configuration" />
     <MESSAGE value="Added copyright disclaimer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added copyright disclaimer" />
+    <MESSAGE value="Added SPacketDisconnect and ChatObject" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SPacketDisconnect and ChatObject" />
   </component>
 </project>

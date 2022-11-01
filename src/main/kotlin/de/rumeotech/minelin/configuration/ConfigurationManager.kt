@@ -12,11 +12,11 @@ object ConfigurationManager {
 
     fun saveConfig() {
         val propertiesFile = File("server.json")
-        propertiesFile.writeText(gson.toJson(propertiesFile))
+        propertiesFile.writeText(gson.toJson(serverConfiguration))
     }
 
     fun loadConfig() {
-        val propertiesFile = File("config.json")
+        val propertiesFile = File("server.json")
         if(propertiesFile.exists()) {
             serverConfiguration = gson.fromJson(propertiesFile.readText(), ServerConfiguration::class.java)
         }
