@@ -26,7 +26,7 @@ class CPacketLoginStart : Packet() {
         val sigData =           if (hasSigData) reader.readBytes(sigLength.value)       else ByteArray(0)
         val hasUUID =                           reader.readBoolean()
         val uuid =              if (hasUUID)    reader.readUUID()                       else UUID.randomUUID()
-        LOGGER.info("player: \"$username\" tries to login [uuid: $uuid]")
+        LOGGER.info("player: \"$username\" tries to login [uuid: $uuid, timestamp: $timestamp]")
     }
 
     override fun write(writer: PacketWriter) {
