@@ -3,11 +3,13 @@ package de.rumeotech.minelin.networking
 import de.rumeotech.minelin.Minelin
 import de.rumeotech.minelin.networking.packet.impl.Packet
 import de.rumeotech.minelin.networking.packet.impl.PacketState
+import de.rumeotech.minelin.networking.packet.impl.side.clientbound.status.SPacketPongResponse
 import de.rumeotech.minelin.networking.packet.impl.util.PacketWriter
 import de.rumeotech.minelin.networking.util.VariableHelper
 import de.rumeotech.minelin.networking.util.datatype.VarInt
 import java.io.ByteArrayOutputStream
 import java.net.Socket
+import java.security.SecureRandom
 import java.util.*
 
 
@@ -43,7 +45,20 @@ class MinelinClient(val socket: Socket) {
      */
     var lastInputAt = System.currentTimeMillis()
 
+    /**
+     * Array of random 4 bytes that verifies the client
+     */
+    val verifyToken = ByteArray(4)
+
+    /**
+     * Secured random for clients verify token
+     */
+    private val random = SecureRandom()
+
     init {
+        // Generate verify token for client
+        random.nextBytes(verifyToken)
+
         val clientThread = Thread(
             {
 
@@ -83,6 +98,11 @@ class MinelinClient(val socket: Socket) {
 
         // send the data to the client
         outputStream.flush()
+
+        if(packet is SPacketPongResponse) {
+            // Client will be disconnected safely after 3 seconds
+            this.lastInputAt = System.currentTimeMillis() - (1000*12)
+        }
     }
 
     /**

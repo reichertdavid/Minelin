@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="⏱ Added Ping/Pong Packets for Status/Server List">
+    <list default="true" id="fb156baf-6cfb-4d62-ae09-5a2d944835bd" name="Changes" comment="Fixed typo that came with last commit">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/clientbound/login/SPacketEncryptionRequest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/util/MinelinEncryption.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -12,9 +14,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/Minelin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/Minelin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/MinelinClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/MinelinClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/PacketHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/PacketHandler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/status/CPacketStatusRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/status/CPacketStatusRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/login/CPacketLoginStart.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/login/CPacketLoginStart.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/util/PacketWriter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/util/PacketWriter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +63,8 @@
         <option value="Kotlin Annotation" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Enum" />
-        <option value="Kotlin Object" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Object" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -78,23 +81,26 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2GVMlr5m9qtE14Hncc3k7TpoO3Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/reich/Documents/Projects/minelin/src/main/resources",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/reich/Documents/Projects/minelin/src/main/resources&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\reich\Documents\Projects\minelin\src\main\resources" />
@@ -142,7 +148,13 @@
       <workItem from="1666526971456" duration="9660000" />
       <workItem from="1666558399929" duration="3451000" />
       <workItem from="1666637887204" duration="6434000" />
-      <workItem from="1666720963588" duration="7075000" />
+      <workItem from="1666720963588" duration="8951000" />
+      <workItem from="1666974077759" duration="2916000" />
+      <workItem from="1667032466611" duration="4945000" />
+      <workItem from="1667250539224" duration="97000" />
+      <workItem from="1667296389311" duration="3510000" />
+      <workItem from="1667987358241" duration="1679000" />
+      <workItem from="1668878639987" duration="1274000" />
     </task>
     <task id="LOCAL-00001" summary="🗂 Configured Workspace and added gradle to it">
       <created>1666469895583</created>
@@ -242,7 +254,56 @@
       <option name="project" value="LOCAL" />
       <updated>1666729188347</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="⏹ Disconnecting clients if input stream empty for X seconds">
+      <created>1666730133238</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1666730133238</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added documentation for server configuration">
+      <created>1667034842814</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1667034842814</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added copyright disclaimer">
+      <created>1667035314966</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1667035314966</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added SPacketDisconnect and ChatObject">
+      <created>1667036098460</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1667036098460</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fixed ConfigurationManager and added CPacketLoginStart">
+      <created>1667299825793</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1667299825793</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Changed some logging messages">
+      <created>1667987900762</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1667987900762</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixed typo that came with last commit">
+      <created>1667987952748</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1667987952748</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,17 +347,14 @@
     <MESSAGE value="ℹ Added ability to send packets and finished SPacketStatusResponse" />
     <MESSAGE value=" Added first attempts of configuration" />
     <MESSAGE value="⏱ Added Ping/Pong Packets for Status/Server List" />
-    <option name="LAST_COMMIT_MESSAGE" value="⏱ Added Ping/Pong Packets for Status/Server List" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/de/rumeotech/minelin/networking/packet/impl/side/serverbound/status/CPacketPingRequest.kt</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="⏹ Disconnecting clients if input stream empty for X seconds" />
+    <MESSAGE value="Switched from org.json to google gson" />
+    <MESSAGE value="Added documentation for server configuration" />
+    <MESSAGE value="Added copyright disclaimer" />
+    <MESSAGE value="Added SPacketDisconnect and ChatObject" />
+    <MESSAGE value="Fixed ConfigurationManager and added CPacketLoginStart" />
+    <MESSAGE value="Changed some logging messages" />
+    <MESSAGE value="Fixed typo that came with last commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed typo that came with last commit" />
   </component>
 </project>

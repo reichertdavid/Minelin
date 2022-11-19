@@ -3,6 +3,7 @@ package de.rumeotech.minelin.networking.packet.impl.util
 import de.rumeotech.minelin.networking.util.VariableHelper
 import de.rumeotech.minelin.networking.util.datatype.VarInt
 import java.io.InputStream
+import java.util.UUID
 
 class PacketReader(val input: InputStream) {
 
@@ -11,6 +12,31 @@ class PacketReader(val input: InputStream) {
      */
     fun readVarInt(): VarInt {
         return VariableHelper.readVarInt(input)
+    }
+
+    /**
+     * this function will read a byte
+     */
+    fun readBytes(length: Int): ByteArray {
+        val bytes = ByteArray(length)
+        input.read(bytes)
+        return bytes;
+    }
+
+    /**
+     * This function will read two 64-bit integers ("long") and convert them into a uuid
+     */
+    fun readUUID(): UUID {
+        val msb = this.readLong()
+        val lsb = this.readLong()
+        return UUID(msb, lsb)
+    }
+
+    /**
+     * This function will read the next byte and convert it into a boolean
+     */
+    fun readBoolean(): Boolean {
+        return input.read() == 1
     }
 
     fun readLong(): Long {

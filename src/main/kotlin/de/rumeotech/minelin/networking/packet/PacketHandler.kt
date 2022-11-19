@@ -3,6 +3,7 @@ package de.rumeotech.minelin.networking.packet
 import de.rumeotech.minelin.networking.MinelinClient
 import de.rumeotech.minelin.networking.packet.impl.*
 import de.rumeotech.minelin.networking.packet.impl.side.serverbound.handshake.CPacketHandshake
+import de.rumeotech.minelin.networking.packet.impl.side.serverbound.login.CPacketLoginStart
 import de.rumeotech.minelin.networking.packet.impl.side.serverbound.status.CPacketPingRequest
 import de.rumeotech.minelin.networking.packet.impl.side.serverbound.status.CPacketStatusRequest
 import de.rumeotech.minelin.networking.packet.impl.util.PacketReader
@@ -20,7 +21,7 @@ class PacketHandler {
      * A list of all packets that could be sent by the client
      */
     private val incomingPackets = mutableListOf(
-        CPacketHandshake(), CPacketStatusRequest(), CPacketPingRequest())
+        CPacketHandshake(), CPacketStatusRequest(), CPacketPingRequest(), CPacketLoginStart())
 
     fun handlePacket(client: MinelinClient) {
         try {
@@ -40,9 +41,6 @@ class PacketHandler {
             if(packetSize.value - packetId.size > 0) {
                 input.read(data)
             }
-
-
-            LOGGER.info("receiving packet - id: $packetId, size: $packetSize, state: ${client.currentState}")
 
             val packetStream = ByteArrayInputStream(data)
             val packet = incomingPackets.firstOrNull { p ->

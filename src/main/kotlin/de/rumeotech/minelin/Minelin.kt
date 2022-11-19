@@ -2,7 +2,9 @@ package de.rumeotech.minelin
 
 import de.rumeotech.minelin.configuration.ConfigurationManager
 import de.rumeotech.minelin.networking.MinelinServer
+import de.rumeotech.minelin.networking.util.MinelinEncryption
 import org.apache.logging.log4j.LogManager
+import java.security.KeyPair
 
 object Minelin {
 
@@ -22,18 +24,25 @@ object Minelin {
      */
     lateinit var server: MinelinServer
 
+    /**
+     * RSA Keypair for Protocol Encryption
+     */
+    lateinit var keyPair: KeyPair
+
     @JvmStatic
     fun main(args: Array<String>) {
         LOGGER.info("Starting up Minelin $VERSION...")
-
-        ConfigurationManager.loadConfig()
 
         Runtime.getRuntime().addShutdownHook(Thread {
             ConfigurationManager.saveConfig()
         })
 
+        LOGGER.info("Generating 1024-bit RSA Keypair...")
+        keyPair = MinelinEncryption.generateKeyPair()
+
         server = MinelinServer()
         server.start()
+        LOGGER.info("Successfully started minelin!")
     }
 
 }

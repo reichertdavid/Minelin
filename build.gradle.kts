@@ -10,6 +10,7 @@ version = "1.0.0-ALPHA"
 
 repositories {
     mavenCentral()
+    maven("https://jcenter.bintray.com/")
 }
 
 dependencies {
@@ -18,7 +19,10 @@ dependencies {
     implementation("org.apache.logging.log4j", "log4j-core", "2.19.0")
 
     // org.json implementation
-    implementation("org.json", "json", "20220924")
+    implementation("com.google.code.gson", "gson", "2.10")
+
+    // khttp implementation
+    implementation("khttp", "khttp", "1.0.0")
 }
 
 tasks.test {

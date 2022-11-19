@@ -40,7 +40,6 @@ class MinelinServer {
                 try {
                     val socket = this.serverSocket.accept()
                     this.connectedClients.add(MinelinClient(socket))
-                    LOGGER.info("Accepting connection from \"${socket.inetAddress.hostName}\"")
                 } catch (e: IOException) {
                     LOGGER.error("Failed connection - info: ", e)
                 }
