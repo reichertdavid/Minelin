@@ -9,6 +9,7 @@ import de.rumeotech.minelin.networking.util.VariableHelper
 import de.rumeotech.minelin.networking.util.datatype.VarInt
 import java.io.ByteArrayOutputStream
 import java.net.Socket
+import java.security.SecureRandom
 import java.util.*
 
 
@@ -44,7 +45,20 @@ class MinelinClient(val socket: Socket) {
      */
     var lastInputAt = System.currentTimeMillis()
 
+    /**
+     * Array of random 4 bytes that verifies the client
+     */
+    val verifyToken = ByteArray(4)
+
+    /**
+     * Secured random for clients verify token
+     */
+    private val random = SecureRandom()
+
     init {
+        // Generate verify token for client
+        random.nextBytes(verifyToken)
+
         val clientThread = Thread(
             {
 

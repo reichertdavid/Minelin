@@ -8,6 +8,10 @@ import java.io.ByteArrayOutputStream
 
 class PacketWriter(val output: ByteArrayOutputStream) {
 
+    fun writeBytes(bytes: ByteArray) {
+        this.writeVarInt(VarInt(bytes.size, -1))
+        output.write(bytes)
+    }
     fun writeChat(chat: ChatObject) {
         val string = ConfigurationManager.gson.toJson(chat)
         this.writeString(string)

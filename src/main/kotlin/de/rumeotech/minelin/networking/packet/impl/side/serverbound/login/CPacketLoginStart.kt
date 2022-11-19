@@ -4,6 +4,7 @@ import de.rumeotech.minelin.networking.MinelinClient
 import de.rumeotech.minelin.networking.packet.impl.Packet
 import de.rumeotech.minelin.networking.packet.impl.PacketInfo
 import de.rumeotech.minelin.networking.packet.impl.PacketState
+import de.rumeotech.minelin.networking.packet.impl.side.clientbound.login.SPacketEncryptionRequest
 import de.rumeotech.minelin.networking.packet.impl.util.PacketReader
 import de.rumeotech.minelin.networking.packet.impl.util.PacketWriter
 import de.rumeotech.minelin.networking.util.datatype.VarInt
@@ -27,6 +28,7 @@ class CPacketLoginStart : Packet() {
         val hasUUID =                           reader.readBoolean()
         val uuid =              if (hasUUID)    reader.readUUID()                       else UUID.randomUUID()
         LOGGER.info("player: \"$username\" tries to login [uuid: $uuid, timestamp: $timestamp]")
+        client.sendPacket(SPacketEncryptionRequest(client.verifyToken))
     }
 
     override fun write(writer: PacketWriter) {
